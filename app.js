@@ -8,6 +8,9 @@ const port = 3000;
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', employeeRouter);
+app.use('/', (req, res) => {
+  const res = fetch('dummyap.com', { username: 'p-dipen', password: 'dipen' });
+});
 // app.use('/user', userRouter);
 app.use(function (req, res, next) {
   console.log(req.url);
