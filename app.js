@@ -1,15 +1,21 @@
+import 'dotenv/config';
 import express from 'express';
 import userRouter from './routes/user.js';
 import employeeRouter from './routes/exmployee.js';
 import bodyParser from 'body-parser';
+import { CAR_API } from './utils/constant.js';
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+console.log('This value of PORT', process.env.PORT);
 // base path
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', employeeRouter);
 app.use('/', (req, res) => {
-  const res = fetch('dummyap.com', { username: 'p-dipen', password: 'dipen' });
+  // for local the username and password
+  // for QA env it can be different
+  // for prod it will different
+  // const res = fetch('dummyap.com', { username: 'p-dipen', password: 'dipen' });
 });
 // app.use('/user', userRouter);
 app.use(function (req, res, next) {
